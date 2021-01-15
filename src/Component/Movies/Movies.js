@@ -7,24 +7,24 @@ const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [query, setQuery] = useState('');
 
-    const API_KEY = "b57e0c63";
-    const apiURI = `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`;
-
-    useEffect(() => {
-        const fetchMovie = async () => {
-            setLoading(true) //make request
-            const response = await axios.get(apiURI, { header: { Accept: "apllicatio/json" } });
-            console.log(response.data);
-        }
-        setLoading(false) //received response
-
-        fetchMovie();
-    }, [apiURI]);
 
     const searchMovie = async (e) => {
         e.preventDefault();
-        console.log('searching')
+
+        const API_KEY = "b57e0c63";
+        const apiURI = `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`;
+
+        try {
+            const response = await axios.get(apiURI);
+           const  data = response.data.Search
+             setMovies(data);
+
+        } catch (err) {
+            console.error(err);
+        }
     }
+
+    console.log(movies, "movies");
 
     return (
         <div>
@@ -43,9 +43,15 @@ const Movies = () => {
                     name="query"
                     placeholder="i.e Guardians of the Galaxy Vol. 2"
                     value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                 />
                 <button className="button" type="submit">Search</button>
             </form>
+
+            {/*Display movies*/}
+            <div className="card__list__movies">
+                {movies.map(movie =>  movie.Title)}
+            </div>
         </div>
     )
 }
