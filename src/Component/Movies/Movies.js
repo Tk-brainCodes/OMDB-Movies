@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './Movies.css'
 
 const Movies = () => {
-    const [loading, setLoading] = useState(false);
     const [movies, setMovies] = useState([]);
     const [query, setQuery] = useState('');
 
@@ -16,8 +15,9 @@ const Movies = () => {
 
         try {
             const response = await axios.get(apiURI);
-           const  data = response.data.Search
-             setMovies(data);
+            const data = response.data.Search
+            console.log(data)
+            setMovies(data);
 
         } catch (err) {
             console.error(err);
@@ -26,31 +26,55 @@ const Movies = () => {
 
     console.log(movies, "movies");
 
-    return (
-        <div>
-            <h1>The Shoppies</h1>
-            <form className="form" onSubmit={searchMovie}>
-                <label
-                    className="label"
-                    htmlFor="query"
-                >
-                    Movie Name
-                </label>
 
-                <input
-                    className="input"
-                    type="text"
-                    name="query"
-                    placeholder="i.e Guardians of the Galaxy Vol. 2"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                />
-                <button className="button" type="submit">Search</button>
-            </form>
+    return (
+        <div className="shoppies">
+            <div className="header">
+                <h1 className="title">The Shoppies</h1>
+
+                {/*Search form*/}
+
+                <div className="search">
+                    <form className="search-form" onSubmit={searchMovie}>
+                        <label
+                            htmlFor="query"
+                            className="name"
+                        >
+                            Movie Name :
+                      </label>
+                        <input
+                            type="text"
+                            name="query"
+                            placeholder="i.e Guardians of the Galaxy Vol. 2"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                        <button type="submit">Search</button>
+                    </form>
+
+                </div>
+                <button className="norminee">List Of Norminations</button>
+            </div>
+
 
             {/*Display movies*/}
-            <div className="card__list__movies">
-                {movies.map(movie =>  movie.Title)}
+
+            <div className="cardlist__movies">
+                {movies.filter(movie => movie.Poster).map((movie, index) => (
+                    <div className="card" key={index}>
+                        <img
+                            className="movie__image"
+                            src={movie.Poster}
+                            alt="postal"
+                        />
+                        <div className="flex__card">
+                            <p className="heading">{movie.Title}</p>
+                            <p className="paragraph">{movie.Year}</p>
+                            <br />
+                            <button className="norminee">Norminate</button>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )

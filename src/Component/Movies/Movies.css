@@ -1,4 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .input  {
     padding: 20px;
     width: 300px;
 }
+
+.cardlist__movies {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-shadow: 5px 5px 32px 5px rgba(0,0,0,0.43); 
+    box-shadow: 5px 5px 32px 5px rgba(0,0,0,0.43);
+}
+
+.card {
+    margin-left: 20px;
+    border-radius: 4px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.movie__image {
+    height: 500px;
+    width: 350px;
+    border-radius: 10px;
+}
+
+.flex__card {
+    background-color: rgb(14, 13, 13);
+    color: #f6cd61 ;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.heading {
+    font-size: 17px;
+    font-weight: bolder;
+    padding: 5px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.paragraph {
+    padding: 5px;
+    color: #3da4ab ;
+}
+
+.title {
+    font-family: 'Pacifico', cursive;
+    color: white;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.name {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.search {
+    color: white;
+    font-weight: bolder;
+}
+
+.search input[type="text"]{
+    border: 1px solid #f6cd61;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
+	border-radius: 2px;
+	width: 40em;
+	padding: 20px;
+}
+
+.search input[type="text"]:focus
+{
+	outline: 0;
+}
+
+button {
+    background-color: #dfad31;
+    border: none;
+    color:white;
+    font-weight: bolder;
+    font-size: 16px;
+	padding: 20px;
+    cursor:pointer;
+}
+
+
+.norminee {
+    border-radius: 4px;
+    background: rgb(9, 136, 9);
+}
+
+/* ===========================
+   ====== Medua Query for Search Box ====== 
+   =========================== */
+
+@media only screen and (min-width : 150px) and (max-width : 780px)
+{
+	.search
+	{
+		width: 40em;
+		margin: 0 auto;
+	}
+
+}
+
