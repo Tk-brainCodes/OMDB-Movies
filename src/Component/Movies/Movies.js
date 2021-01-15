@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../Header/Header';
 import axios from 'axios';
 import './Movies.css'
 
@@ -29,53 +30,13 @@ const Movies = () => {
 
     return (
         <div className="shoppies">
-            <div className="header">
-                <h1 className="title">The Shoppies</h1>
-
-                {/*Search form*/}
-
-                <div className="search">
-                    <form className="search-form" onSubmit={searchMovie}>
-                        <label
-                            htmlFor="query"
-                            className="name"
-                        >
-                            Movie Name :
-                      </label>
-                        <input
-                            type="text"
-                            name="query"
-                            placeholder="i.e Guardians of the Galaxy Vol. 2"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                        />
-                        <button type="submit">Search</button>
-                    </form>
-
-                </div>
-                <button className="norminee">List Of Norminations</button>
-            </div>
-
-
+            <Header
+                searchMovie={searchMovie}
+                query={query}
+                setQuery={setQuery}
+                movies={movies}
+            />
             {/*Display movies*/}
-
-            <div className="cardlist__movies">
-                {movies.filter(movie => movie.Poster).map((movie, index) => (
-                    <div className="card" key={index}>
-                        <img
-                            className="movie__image"
-                            src={movie.Poster}
-                            alt="postal"
-                        />
-                        <div className="flex__card">
-                            <p className="heading">{movie.Title}</p>
-                            <p className="paragraph">{movie.Year}</p>
-                            <br />
-                            <button className="norminee">Norminate</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
         </div>
     )
 }
