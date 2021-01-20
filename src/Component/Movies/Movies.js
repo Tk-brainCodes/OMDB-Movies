@@ -12,7 +12,7 @@ const Movies = () => {
         e.preventDefault();
 
         const API_KEY = "b57e0c63";
-        const apiURI = `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`;
+        const apiURI = `https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`;
 
         try {
             const response = await axios.get(apiURI);
