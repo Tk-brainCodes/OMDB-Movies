@@ -1,22 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './Header.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-} from "react-router-dom";
-import MovieLIst from '../Movies/LIst/MovieList';
 import Card from '../Card/Card';
+
 
 
 const Header = ({ searchMovie, query, setQuery, movies }) => {
     return (
-        <Router>
+        <Fragment>
             <div className="header">
-                <Link to="/" className="link">
-                    <h1 className="title">The Shoppies</h1>
-                </Link>
+                <h1 className="title">Movie-search</h1>
 
                 {/*Search form*/}
 
@@ -26,8 +18,7 @@ const Header = ({ searchMovie, query, setQuery, movies }) => {
                             htmlFor="query"
                             className="name"
                         >
-                            Movie Name :
-              </label>
+                        </label>
                         <input
                             type="text"
                             name="query"
@@ -38,22 +29,14 @@ const Header = ({ searchMovie, query, setQuery, movies }) => {
                         <button type="submit">Search</button>
                     </form>
                 </div>
-                <Link to="/list">
-                    <button className="norminee">List Of Norminations</button>
-                </Link>
             </div>
+
             <div className="list-movie">
-                <Switch>
-                    <Route path="/list">
-                        <MovieLIst />
-                    </Route>
-                    <Route path="/">
-                        <Card movies={movies} />
-                    </Route>
-                </Switch>
+                <Card movies={movies} />
             </div>
-        </Router>
+        </Fragment>
     )
 }
 
 export default Header;
+

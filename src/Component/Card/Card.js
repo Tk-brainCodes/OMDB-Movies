@@ -15,7 +15,6 @@ const Card = ({ movies }) => {
                         <p className="heading">{movie.Title}</p>
                         <p className="paragraph">{movie.Year}</p>
                         <br />
-                        <button className="norminee">Norminate</button>
                     </div>
                 </div>
             ))}

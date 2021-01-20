@@ -1,2 +1,0 @@
-export const ADD_NORMINEE = "ADD_NORMINEE";
-export const REMOVE_NORMINEE = "REMOVE_NORMINEE";
